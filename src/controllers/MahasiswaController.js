@@ -3,7 +3,12 @@ class MahasiswaController {
   getAll = async (req, res) => {
     const [data] = await mhsModel.get();
     if (data.length > 0)
-      res.send({ status: true, message: "Data ditemukan", data: data });
+      res.send({
+        status: true,
+        message: "Data ditemukan",
+        data: data,
+        userRequest: req.jwt,
+      });
     else res.send({ status: false, message: "Data kosong" });
   };
   findById = async (req, res) => {
